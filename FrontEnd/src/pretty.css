@@ -122,3 +122,13 @@ textarea {
 .send-message-box button:hover {
     background-color: #003f88;
 }
+
+.my-photo {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .my-photo {
+        display: none;
+    }
+}
