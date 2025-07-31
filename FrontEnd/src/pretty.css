@@ -2,8 +2,19 @@ body {
     background-color: #151525;
     color: white;
     font-family: "Roboto", sans-serif;
+    
 }
 
+.header-picture p{
+    font-size: 1.5rem;
+}
+body h1 {
+    font-size: 4.5rem;
+}
+
+body p {
+    font-size: 1.5rem;
+}
 
 .header-picture {
     position: relative;
@@ -11,8 +22,7 @@ body {
 }
 .header-picture img {
     width: 100%;
-    opacity: 0.5;
-    display: block;
+    opacity: 0.1;
     height: 700px;
 }
 .small-text {
@@ -63,7 +73,6 @@ body {
     margin-bottom: 10px;
 }
 
-
 .center-contact
 {
     display: flex;
@@ -73,7 +82,7 @@ body {
 }
 
 .ContactUs{
-    width: 60%;
+    width: 80%;
     text-align: center;    
 }
 
@@ -94,8 +103,12 @@ textarea {
   width: 90%;           /* Make image smaller */
   height: 80%;           /* Keep aspect ratio */
 }
+.text-input{
+    width: 20%;
+    height: 25px; /* increase height */
+    border-radius: 10px;
 
-
+}
 .Message-box {
     width: 40%;
     height: 120px;
@@ -123,12 +136,43 @@ textarea {
     background-color: #003f88;
 }
 
-.my-photo {
+.center-picture {
     display: block;
 }
 
-@media (max-width: 768px) {
-    .my-photo {
+@media (max-width: 1000px) {
+.header-picture img {
+    width: 100%;
+    opacity: 0.5;
+    display: block;
+    height: 600px;
+}
+
+    .center-picture {
         display: none;
     }
+
+    .center-contact {
+        display: flex;
+        flex-direction: center; /* stack vertically */
+        text-align: center;
+        justify-content: center;
+        align-self: center;
+    }
+
+    .contact-row {
+        flex-direction: column; /* <— stack phone under email */
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+    .Message-box {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;
+    margin-bottom: 20px;
+}
+
 }
