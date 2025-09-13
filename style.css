@@ -1,14 +1,64 @@
-.root{
+:root{
     height: 100vh;
     padding: 0%;
     margin: 0%;
+
+    --primary-color: #2563eb; /* Brighter blue */
+    --secondary-color: #3b82f6;
+    --accent-color: #10b981; /* Add green accent */
+    --warning-color: #f59e0b; /* Add orange/yellow */
+
+    --text-color: #333333;
+    --background-color: #f9fafb;
+    --secondary-background-color: #f9fafb;
+    --success-color: #059669; /* Success green */
+
+    --hero-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-gradient: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    /* Font-heights and margins */
+    --p: ;
+    --h1: ;
+    --h2: ;
+    --h3: 1.5rem; /* or whatever size you want */ 
+    --h4: ;
+
+  --section-padding: 4rem;
+  --card-radius: 10px;
+
+  /* fonts */
+    --main-font: 'Inter', sans-serif;
+
+
+    font-family: var(--main-font)
 }
-img {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
-    aspect-ratio: 1/1;
-    object-fit: cover;
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+h3 {
+    font-size: var(--h3);
+}
+.card-title h3{
+    font-size: var(--h3);
+}
+.header {
+    display: flex;
+    justify-content: space-between; /* logo left, right-side items right */
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* space between hamburger and language switcher */
+}
+
+.lang-switcher {
+    padding: 0.3rem 0.8rem;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
 }
 .hero-header-section {
     display: flex;
@@ -18,8 +68,20 @@ img {
     height: 100dvh
 }
 
+.hero-text-action-section h2 {
+    text-align: center;
+    padding: 10px;
+}
+.borderless-card-subtitle{
+    height: 10px;
+    padding: 10px;
+}
+
 .services-section {
 background: #f9fafb;
+height: auto;
+padding: 0.625rem;
+flex-wrap: wrap;
 }
 
 .services-text-section {
@@ -31,12 +93,15 @@ background: #f9fafb;
     flex-wrap: wrap;
     justify-content: center; /* centers cards horizontally */
     gap: 20px; /* space between cards */
-    max-width: 2000px;
     margin: 0 auto; /* centers the grid container */
     padding: 20px;
+    width: auto;
 }
 
 .card {
+  background: var(--card-gradient);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
   width: 200px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -46,23 +111,146 @@ background: #f9fafb;
   vertical-align: top;
   background-color: #ffffff;
 }
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+.card:hover::before {
+    left: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+.card-icon {
+    border-radius: 50%;
+    padding: 8px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card-icon svg {
+    width: 24px;
+    height: 24px;
+}
+/* Colorful border accents for each service */
+.card:nth-child(1) { border-left: 5px solid #3b82f6; }
+.card:nth-child(2) { border-left: 5px solid #ef4444; }
+.card:nth-child(3) { border-left: 5px solid #10b981; }
+.card:nth-child(4) { border-left: 5px solid #f59e0b; }
+
+.card:nth-child(1) .card-icon {
+    background: linear-gradient(45deg, #3b82f6, #3b82f6);
+    color: white;
+}
+
+.card:nth-child(2) .card-icon {
+    background: linear-gradient(45deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.card:nth-child(3) .card-icon {
+    background: linear-gradient(45deg, #10b981, #10b981);
+    color: white;
+}
+
+.card:nth-child(4) .card-icon {
+    background: linear-gradient(45deg, #f59e0b, #f59e0b);
+    color: white;
+}
+
+.borderless-card:nth-child(1) .card-icon
+{
+    background: linear-gradient(45deg, #3b82f6, #3b82f6);
+    color: white;
+}
+.borderless-card:nth-child(2) .card-icon
+{
+    background: linear-gradient(45deg, #10b981, #10b981);
+    color: white;
+}
+.borderless-card:nth-child(3) .card-icon
+{
+    background: linear-gradient(45deg, #f59e0b, #f59e0b);
+    color: white;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card, .quote-card, .borderless-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.2s; }
+.card:nth-child(4) { animation-delay: 0.3s; }
+
+
+button {
+    background: linear-gradient(45deg, #059669, #10b981);    padding: 12px 24px;
+    color: white;
+    padding: 15px 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+}
+
+
 .icon-plus-title{
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+ 
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 .card-icon { width: 32px; height: 32px;}
-.card-title { font-weight: bold; font-size: 16px;}
+.card-title { font-weight: bold; font-size: 24px;}
 .card-subtitle { color: gray; font-size: 0.9rem; }
 .card a { margin-right: 5px; color: #e5e5e5; text-decoration: none; }
  .card ul { padding-left: 10px}
 .call-to-action {
     padding: 40px 20px;
+    background: var(--secondary-background-color);
 }
 .call-to-action-title {
     text-align: center;
     margin-bottom: 40px;
 }
+
+
 .call-to-action-information {
     display: flex;
     flex-direction: row;
@@ -111,17 +299,26 @@ background: #f9fafb;
     margin-bottom: 10px;
     height: 80px;
 }
-.why-us-pic {
-    
+.why-us-pic img{
+  border-radius: 5%;   /* makes it perfectly round */
+  object-fit: cover;    /* ensures it doesn't stretch */
+  object-position: center;
+  display: block;       /* removes extra space under image */
+  height: 400px;
+  padding: 15px;
+  width: 100%;
 }
+
 .why-us-section {
     display: flex;
     margin: 10px auto;
     justify-content: center;
+    align-items: flex-start;
     height: auto;
+    gap: 20px;
 }
-.why-us-service-section {
-
+.why-us-services-section{
+    padding: 15px;
 }
 
 .borderless-card-subtitle {
@@ -130,18 +327,23 @@ background: #f9fafb;
     margin-bottom: 1px;
     height: 56px;
 }
+.borderless-card h2 {
+    width: 120px;
+}
 /*
 Quote card 
 */
 .quote-card {
-    max-width: 500px;
+    width: clamp(300px, 30vw, 800px);
     margin: 20px auto;
+    margin-top: 50px;
     padding: 20px;
     background: #fff;
     border: 1px solid #e5e5e5;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0,0,0.05);
     flex: 1;
+    
 }
 .quote-card h2 {
     margin-bottom: 20px;
@@ -150,6 +352,7 @@ Quote card
 }
 .form-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 15px;
     margin-bottom:15px;
 }
@@ -176,22 +379,11 @@ textarea {
     resize: vertical;
     resize: none;
 }
-button {
-    margin-top: 12px;
-    padding: 8px;
-    background: rgb(104, 104, 236);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    
-}
 
 
 .get-in-touch {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     gap: 15px;
     flex: 1;
@@ -199,9 +391,12 @@ button {
 }
 
 .get-in-touch-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 10px;
     margin: 10px;
     background-color: rgb(255, 255, 255);
 }
@@ -216,14 +411,72 @@ button {
     color: #666;
     line-height: 1.5;
 }
-        
+
+.medical-supplies-title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 10px;
+    height: auto;
+}
+
+.medical-supplies-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* don’t stretch vertically */
+    flex-wrap: wrap;         /* allow cards to wrap */
+    gap: 20px;               /* spacing between cards */
+    max-width: 1800px;       /* keeps grid from stretching too wide */
+    margin: 0 auto;          /* centers grid container */
+    padding: 20px;
+}
+
+.medical-supplies-card img {
+    height: auto;   
+    aspect-ratio: auto;
+    object-fit: cover;
+}
+
+.medical-supplies-card {
+  width: 24rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  margin: 10px;
+  height: auto;
+  padding: 10px;
+}
+.card-text{
+    width: 50%;
+}
 /* Responsive design */
 @media (max-width: 768px) {
     .call-to-action-information {
+        display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
         gap: 2rem;
     }
     .get-in-touch {
         max-width: 100%;
+    }
+
+    .hero-text-action-section h2 {
+        text-align: center;
+    }
+    .why-us-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .why-us-pic {
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        height: auto;
+    }
+        .why-us-services-section {
+        width: 100%; /* optional: make text take full width */
+        text-align: center; /* center text */
     }
 }
