@@ -59,6 +59,7 @@ h3 {
     border: 1px solid #ccc;
     background-color: white;
     cursor: pointer;
+    padding: 24px;
 }
 .hero-header-section {
     display: flex;
@@ -67,7 +68,14 @@ h3 {
     align-items: center;
     height: 100dvh
 }
-
+.logo {
+ font-size: clamp(1.40rem, 1.25vw, 2rem);}
+.hero-text-action-section {
+    font-size: clamp(1.20rem, 1vw, 1.75rem);
+}
+.services-text-section h1{
+    font-size: 3.125rem;
+}
 .hero-text-action-section h2 {
     text-align: center;
     padding: 10px;
@@ -84,6 +92,9 @@ padding: 0.625rem;
 flex-wrap: wrap;
 }
 
+.logo {
+    width: clamp(25px, 50%, 100%);
+}
 .services-text-section {
     text-align: center; /* centers text horizontally */
 }
@@ -92,7 +103,7 @@ flex-wrap: wrap;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* centers cards horizontally */
-    gap: 20px; /* space between cards */
+    gap: 10px; /* space between cards */
     margin: 0 auto; /* centers the grid container */
     padding: 20px;
     width: auto;
