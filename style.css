@@ -19,7 +19,7 @@
     --p: ;
     --h1: ;
     --h2: ;
-    --h3: 1.5rem; /* or whatever size you want */ 
+    --h3: 1.3rem; /* or whatever size you want */ 
     --h4: ;
 
   --section-padding: 4rem;
@@ -31,10 +31,12 @@
 
     font-family: var(--main-font)
 }
-
+html 
 * {
-  font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
 }
+
+
 h3 {
     font-size: var(--h3);
 }
@@ -57,7 +59,7 @@ h3 {
 .lang-switcher {
     padding: 0.3rem 0.8rem;
     border: 1px solid #ccc;
-    background-color: white;
+    background-color: rgb(228, 14, 14);
     cursor: pointer;
     padding: 24px;
 }
@@ -95,9 +97,108 @@ flex-wrap: wrap;
 .logo {
     width: clamp(25px, 50%, 100%);
 }
-.services-text-section {
-    text-align: center; /* centers text horizontally */
+button {
+    /* Remove duplicate padding - you had it twice */
+    background: linear-gradient(45deg, #059669, #10b981);
+    color: white;
+    padding: 15px 30px; /* Keep only one padding declaration */
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3); /* Fixed color values to match your gradient */
+    transition: all 0.3s ease;
+    cursor: pointer; /* Add cursor pointer */
+    font-family: var(--main-font); /* Use your main font */
+    font-size: 14px; /* Add consistent font size */
+    display: inline-block; /* Ensure proper display */
+    text-decoration: none; /* Remove any link decoration if used as anchor */
+    text-align: center; /* Center text */
 }
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4); /* Fixed color values */
+    background: linear-gradient(45deg, #047857, #059669); /* Slightly darker on hover */
+}
+
+button:focus {
+    outline: 2px solid rgba(5, 150, 105, 0.5);
+    outline-offset: 2px;
+}
+
+button:active {
+    transform: translateY(0); /* Reset transform on click */
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+}
+
+.lang-switcher {
+    position: relative;
+    background: rgba(25, 78, 255, 0.5);
+    border: 2px solid rgba(54, 64, 160, 0.3);
+    border-radius: 25px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    min-width: 80px;
+    text-align: center;
+}
+
+.lang-switcher:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* English active state */
+.lang-switcher.lang-en {
+    background: linear-gradient(45deg, #3b82f6, #2563eb);
+    color: white; /* Change this from rgb(24, 36, 207) to white */
+    border-color: #3b82f6;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.lang-switcher.lang-en:hover {
+    background: linear-gradient(45deg, #2563eb, #1d4ed8);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+/* Spanish active state */
+.lang-switcher.lang-es {
+    background: linear-gradient(45deg, #ef4444, #dc2626);
+    color: white; /* Change this from rgb(223, 24, 24) to white */
+    border-color: #ef4444;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.lang-switcher.lang-es:hover {
+    background: linear-gradient(45deg, #dc2626, #b91c1c);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+}
+
+/* Animated separator */
+.lang-switcher::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 60%;
+    background: currentColor;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+/* Hide separator when hovering */
+.lang-switcher:hover::before {
+    opacity: 0;
+}
+
 
 .grid-services-section {
     display: flex;
@@ -216,24 +317,6 @@ flex-wrap: wrap;
 .card:nth-child(3) { animation-delay: 0.2s; }
 .card:nth-child(4) { animation-delay: 0.3s; }
 
-
-button {
-    background: linear-gradient(45deg, #059669, #10b981);    padding: 12px 24px;
-    color: white;
-    padding: 15px 30px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 8px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-}
 
 
 .icon-plus-title{
@@ -374,7 +457,7 @@ Quote card
     flex-direction: column;
 }
 label {
-    font-size: 14px;
+    font-size: 16px;
     margin-bottom: 6px;
 }
 
@@ -459,6 +542,14 @@ textarea {
 }
 .card-text{
     width: 50%;
+}
+.call-to-action-title h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.call-to-action p {
+    font-size: 1.4rem;
+    color: #555;
 }
 /* Responsive design */
 @media (max-width: 768px) {
