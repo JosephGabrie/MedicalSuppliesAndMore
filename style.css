@@ -85,6 +85,9 @@ h3 {
 .services-text-section h1{
     font-size: 3.125rem;
 }
+.services-text-section p{
+    font-size: 1.3rem;
+}
 .hero-text-action-section h2 {
     text-align: center;
     padding: 10px;
